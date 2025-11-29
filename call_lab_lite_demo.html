@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600;700&display=swap');
+        
+        :root {
+            --red: #E51B23;
+            --black: #000000;
+            --yellow: #FFDE59;
+            --white: #FFFFFF;
+            --dark-gray: #1A1A1A;
+            --mid-gray: #333333;
+            --light-gray: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: letter;
+            margin: 0.6in;
+            background: var(--black);
+            @bottom-center {
+                content: "Call Lab Lite — Sales Call Analysis Report | SalesOS";
+                font-family: 'Poppins', sans-serif;
+                font-size: 8pt;
+                color: var(--light-gray);
+            }
+        }
+        
+        body {
+            font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+        
+        .header {
+            margin-bottom: 24px;
+        }
+        
+        .sys-status {
+            font-size: 9pt;
+            color: var(--light-gray);
+            margin-bottom: 4px;
+        }
+        
+        .sys-status .dot {
+            color: var(--red);
+        }
+        
+        .main-title {
+            font-family: 'Anton', Impact, sans-serif;
+            font-size: 32pt;
+            color: var(--white);
+            letter-spacing: 2px;
+            margin-bottom: 2px;
+        }
+        
+        .subtitle {
+            font-size: 10pt;
+            color: var(--light-gray);
+            letter-spacing: 4px;
+            margin-bottom: 16px;
+        }
+        
+        .call-meta {
+            font-size: 10pt;
+        }
+        
+        .call-meta .name {
+            color: var(--yellow);
+        }
+        
+        .score-card {
+            display: inline-block;
+            background: var(--dark-gray);
+            border: 2px solid var(--red);
+            padding: 16px 32px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .score-number {
+            font-family: 'Anton', Impact, sans-serif;
+            font-size: 42pt;
+            color: var(--red);
+            line-height: 1;
+        }
+        
+        .score-label {
+            font-size: 9pt;
+            color: var(--light-gray);
+            margin-top: 4px;
+        }
+        
+        .effectiveness {
+            font-weight: 600;
+            color: var(--yellow);
+            font-size: 11pt;
+            margin-top: 8px;
+        }
+        
+        .dark-card {
+            background: var(--dark-gray);
+            border: 1px solid var(--mid-gray);
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .snap-header {
+            font-family: 'Anton', Impact, sans-serif;
+            font-size: 14pt;
+            color: var(--red);
+            margin-bottom: 8px;
+        }
+        
+        .snap-body {
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+        
+        .pull-quote {
+            background: var(--yellow);
+            color: var(--black);
+            padding: 16px 20px;
+            font-weight: 600;
+            font-size: 12pt;
+            line-height: 1.4;
+            margin: 16px 0;
+        }
+        
+        .section-header {
+            font-family: 'Anton', Impact, sans-serif;
+            font-size: 16pt;
+            color: var(--red);
+            margin-top: 28px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--red);
+        }
+        
+        .pattern-name {
+            font-weight: 700;
+            font-size: 12pt;
+            color: var(--yellow);
+            margin-top: 16px;
+            margin-bottom: 6px;
+        }
+        
+        .pattern-body {
+            font-size: 10pt;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        
+        .evidence {
+            font-size: 9pt;
+            color: var(--light-gray);
+            padding-left: 16px;
+            border-left: 2px solid var(--mid-gray);
+            margin: 8px 0 8px 8px;
+            font-style: italic;
+        }
+        
+        .fix-box {
+            background: var(--mid-gray);
+            border-left: 4px solid var(--red);
+            padding: 12px 16px;
+            margin: 12px 0;
+        }
+        
+        .fix-label {
+            color: var(--red);
+            font-weight: 700;
+        }
+        
+        .signals-container {
+            margin-top: 12px;
+        }
+        
+        .signal-group-header {
+            font-weight: 700;
+            font-size: 11pt;
+            margin-bottom: 8px;
+        }
+        
+        .signal-group-header.positive {
+            color: var(--yellow);
+        }
+        
+        .signal-group-header.negative {
+            color: var(--red);
+        }
+        
+        .signal-item {
+            font-size: 9pt;
+            padding-left: 16px;
+            margin-bottom: 4px;
+        }
+        
+        .signal-item::before {
+            content: "•";
+            margin-right: 8px;
+        }
+        
+        .try-this-label {
+            color: var(--yellow);
+            font-weight: 700;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .try-this-box {
+            background: var(--mid-gray);
+            border-left: 4px solid var(--red);
+            padding: 12px 16px;
+            font-size: 9pt;
+            color: var(--light-gray);
+        }
+        
+        .cta-card {
+            background: var(--red);
+            padding: 24px;
+            text-align: center;
+            margin-top: 24px;
+            page-break-inside: avoid;
+        }
+        
+        .cta-header {
+            font-family: 'Anton', Impact, sans-serif;
+            font-size: 18pt;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        
+        .cta-bullet {
+            font-size: 10pt;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        
+        .cta-button {
+            font-family: 'Anton', Impact, sans-serif;
+            font-size: 16pt;
+            color: var(--white);
+            margin-top: 16px;
+            letter-spacing: 2px;
+        }
+        
+        .bottom-line-body {
+            background: var(--dark-gray);
+            border: 1px solid var(--mid-gray);
+            padding: 16px;
+        }
+        
+        .spacer {
+            height: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="sys-status">SYS_READY <span class="dot">●</span> ANALYSIS COMPLETE</div>
+    <div class="main-title">CALL LAB LITE</div>
+    <div class="subtitle">DIAGNOSTIC SNAPSHOT</div>
+    <div class="call-meta">
+        <span class="name">Sales Rep → Sarah Chen (Founder, Boutique Consulting)</span> | 54 minutes | 11/20/2025
+    </div>
+</div>
+
+<!-- SCORE CARD -->
+<div class="score-card">
+    <div class="score-number">7/10</div>
+    <div class="score-label">CALL SCORE</div>
+    <div class="effectiveness">Strong discovery, weak close</div>
+</div>
+
+<!-- SNAP TAKE -->
+<div class="dark-card">
+    <div class="snap-header">⚡ SNAP TAKE</div>
+    <div class="snap-body">This was a masterclass in generosity that forgot to ask for the sale. The rep built massive trust with a founder who's charging half the market rate and bleeding goodwill. They diagnosed the underpricing problem, delivered a complete pricing framework, offered strategic direction, promised warm introductions to key players, and delivered a custom coaching package—all while making the buyer feel seen and capable. The call worked because the rep made the buyer feel like the hero of their own story. But they never closed.</div>
+</div>
+
+<!-- PULL QUOTE -->
+<div class="pull-quote">"This is the sales equivalent of cooking someone a five-course meal and forgetting to ask if they want dessert."</div>
+
+<!-- WHAT WORKED -->
+<div class="section-header">✓ WHAT WORKED</div>
+
+<div class="pattern-name">The Peer Validation Engine</div>
+<div class="pattern-body">The rep immediately positioned themselves as someone who gets it. They mentioned direct experience in the sector, named the bad actors, and dropped cultural shorthand that said: I'm not here to sell you. I'm here because I've been adjacent to your pain. This wasn't credibility theater. It was earned trust.</div>
+<div class="evidence">"I've worked with organizations in your space. The sector is full of people who don't actually care about the work."</div>
+<div class="evidence">"I have direct experience. These clients are needy, they're underfunded, and they expect miracles."</div>
+
+<div class="pattern-name">The Pricing Intervention</div>
+<div class="pattern-body">The rep didn't dance around the money problem. They did the math out loud and showed the buyer they were charging half the market rate. They didn't shame. They just made the ceiling visible. This is the move that separates coaches from consultants: making the problem visceral without making someone feel stupid.</div>
+<div class="evidence">"If you're maxed out at your current rate, you're capping yourself. That's not sustainable."</div>
+<div class="evidence">"That's half of what people with your experience should be charging. I'm not saying that to be a jerk—I'm saying it because you need to see the gap."</div>
+
+<div class="pattern-name">The Immediate Value Bomb</div>
+<div class="pattern-body">The rep gave warm introductions, a pricing strategy, a service packaging framework, and a hiring roadmap before the buyer paid a dime. This is dangerous generosity—it builds trust fast but can backfire if you don't close. In this case, it worked because the buyer explicitly said the intros alone justified the program. But the rep never asked them to commit.</div>
+<div class="evidence">"The connections you mentioned—those alone would make this worth it for me."</div>
+
+<!-- WHAT TO WATCH -->
+<div class="section-header">⚠ WHAT TO WATCH</div>
+
+<div class="pattern-name">The Advice Avalanche</div>
+<div class="pattern-body">The rep gave away the entire strategy session during discovery. They diagnosed the pricing problem, restructured the service packages, explained the growth stages, and handed over a roadmap for scaling. This is the classic consultant trap: proving your value by solving the problem before they pay you. The buyer now has everything they need to execute without you.</div>
+
+<div class="fix-box">
+    <span class="fix-label">FIX:</span> Save the strategy for after the sale. In discovery, diagnose the problem and name the pattern. Don't solve it. Say: 'This is the Hourly Rate Trap, and it's why you're stuck at your current revenue ceiling. I can show you how to break it, but that's what we'd build in the program.'
+</div>
+
+<div class="pattern-name">The Soft Close Fade</div>
+<div class="pattern-body">The rep spent 54 minutes building trust, then ended with 'let me know what you think' and hung up. No ask. No timeline. No next step. They gave the buyer permission to ghost them. This is the nice-guy close: so afraid of being pushy that you don't actually close. The buyer said yes to the value. They said the connections alone justified the investment. The rep just needed to ask.</div>
+
+<div class="fix-box">
+    <span class="fix-label">FIX:</span> End with a decision point. After laying out the offer, say: 'So here's what I'm thinking. We start with three months, then move to ongoing support. That gets you the plan, the one-on-ones, and the introductions. Does that feel right, or do you need to think about it?' Then stop talking.
+</div>
+
+<!-- WHY THIS CALL WORKED -->
+<div class="section-header">💡 WHY THIS CALL WORKED</div>
+<div class="pattern-body">The buyer came in looking for a business coach. They got a mentor who saw them. The rep didn't sell a program. They reflected back the buyer's own potential and gave them permission to charge what they're worth. This is <b>The Mirror Close</b>—when the buyer sees themselves differently because of how you see them. The buyer revealed they'd never had a positive work experience. The rep told them they're a natural leader and that people like them are rare. That's not flattery. That's pattern recognition. And it's why they'll probably buy.<br><br>The other thing the rep did brilliantly: they made the sale feel inevitable without making it feel urgent. They said 'I never ask for a commitment in the first meeting' and 'you can cancel anytime.' This is anti-pressure selling. It works because it removes the buyer's fear of being trapped. The buyer can say yes without feeling like they're making a permanent decision.<br><br>But here's the tension: the rep gave away so much value that the buyer might not feel urgency to act. They have the introductions. They have the pricing framework. They have the roadmap. The only thing they don't have is accountability. And that might not feel urgent yet.</div>
+
+<!-- SIGNALS -->
+<div class="section-header">📡 CALL SIGNALS DETECTED</div>
+<div class="signals-container">
+    <div class="signal-group-header positive">✓ BUYING SIGNALS</div>
+    <div class="signal-item">Buyer self-diagnosed before the call (found rep through research)</div>
+    <div class="signal-item">Buyer revealed financial situation unprompted (revenue, runway, constraints)</div>
+    <div class="signal-item">Buyer named the exact problem ('I don't know where to go from here')</div>
+    <div class="signal-item">Buyer asked how you build systems (buying signal)</div>
+    <div class="signal-item">Buyer said the introductions alone justify the investment (explicit ROI confirmation)</div>
+    <div class="signal-item">Buyer revealed emotional wound (bad experiences, toxic environments)</div>
+    <div class="signal-item">Buyer stayed engaged for 54 minutes (high interest)</div>
+    <div class="signal-item">Buyer asked zero pricing objections (money isn't the blocker)</div>
+    
+    <div class="spacer"></div>
+    <div class="signal-group-header negative">⚠ WARNING SIGNALS</div>
+    <div class="signal-item">Rep never asked for the sale (missed close)</div>
+    <div class="signal-item">Rep gave away the entire strategy session (devalued the offer)</div>
+</div>
+
+<!-- ONE MOVE TO LEVEL UP -->
+<div class="section-header">⚡ ONE MOVE TO LEVEL UP</div>
+<div class="pattern-body">Stop giving away the strategy session in discovery. You're not proving your value. You're eliminating the buyer's need to hire you.</div>
+<div class="try-this-label">TRY THIS:</div>
+<div class="try-this-box">"Here's what I'm seeing. You're in the Hourly Rate Trap, which means you're capped even if you work full-time. The fix isn't complicated, but it requires restructuring your entire offer model. That's exactly what we'd build in the program—your pricing, your packages, and your positioning. Want me to walk you through what that looks like?"</div>
+
+<!-- BOTTOM LINE -->
+<div class="section-header">🎯 BOTTOM LINE</div>
+<div class="bottom-line-body">You built massive trust and gave them a vision for their business. Your blind spot is you never asked them to start. Fix that and this becomes a case study in how to sell through generosity. This was a strong call. Let's make the next one undeniable.</div>
+
+<!-- CTA -->
+<div class="cta-card">
+    <div class="cta-header">UNLOCK CALL LAB PRO</div>
+    <div class="cta-bullet">→ The exact moment the buyer decided to buy (and why the rep didn't see it)</div>
+    <div class="cta-bullet">→ The three times they asked to be sold (and how to recognize the pattern)</div>
+    <div class="cta-bullet">→ The Generosity Trap and how to give value without giving away the sale</div>
+    <div class="cta-bullet">→ The Mirror Close framework and when to deploy it</div>
+    <div class="cta-bullet">→ Pattern library + trust curve + close map</div>
+    <div class="cta-button">[ UPGRADE NOW ]</div>
+</div>
+
+</body>
+</html>
